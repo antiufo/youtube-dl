@@ -1100,6 +1100,8 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
                 note=download_note,
                 errnote='Download of %s failed' % player_url)
             res = self._parse_sig_js(code)
+            print "THE RESULT"
+            print res
         elif player_type == 'swf':
             urlh = self._request_webpage(
                 player_url, video_id,
@@ -1113,6 +1115,8 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
         test_string = ''.join(map(compat_chr, range(len(example_sig))))
         cache_res = res(test_string)
         cache_spec = [ord(c) for c in cache_res]
+        print "DECRYPTION SPEC IS:"
+        print cache_spec
 
         self._downloader.cache.store('youtube-sigfuncs', func_id, cache_spec)
         return res

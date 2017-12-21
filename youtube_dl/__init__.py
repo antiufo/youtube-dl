@@ -430,9 +430,20 @@ def _real_main(argv=None):
     }
 
     with YoutubeDL(ydl_opts) as ydl:
+        retcode = 0
         # Update version
         if opts.update_self:
             update_self(ydl.to_screen, opts.verbose, ydl._opener)
+
+        if opts.read_decryption_function is not None:
+            print "Exporting decryption function."
+            #dl = YoutubeDL()
+            print ydl
+            y = extractor.YoutubeIE()
+            y.set_downloader(ydl)
+            kk = u''.join(map(utils.compat_chr, range(int(opts.read_decryption_function_len))))
+            print y._extract_signature_function("pco91kroVgQ", opts.read_decryption_function, kk)
+            opts.read_decryption_function
 
         # Remove cache dir
         if opts.rm_cachedir:

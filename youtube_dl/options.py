@@ -849,6 +849,10 @@ def parseOpts(overrideArguments=None):
         metavar='FORMAT', dest='convertsubtitles', default=None,
         help='Convert the subtitles to other format (currently supported: srt|ass|vtt|lrc)')
 
+    postproc.add_option('--read-decryption-function', dest='read_decryption_function', metavar='JSFILE')
+    postproc.add_option('--read-decryption-function-len', dest='read_decryption_function_len', metavar='LEN')
+
+
     parser.add_option_group(general)
     parser.add_option_group(network)
     parser.add_option_group(geo)
